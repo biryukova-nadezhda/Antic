@@ -1,0 +1,24 @@
+@mixin font($family, $weight, $size, $lheight, $color) {
+  font-family: $family;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lheight;
+  color: $color;
+}
+@mixin font($family, $weight, $size, $lHeight, $color) {
+  font-family: $family;
+  font-style: normal;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $lHeight;
+  color: $color;
+}
+
+@mixin bgImage($color, $link) {
+  background-color: $color;
+  background-image: url($link);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
