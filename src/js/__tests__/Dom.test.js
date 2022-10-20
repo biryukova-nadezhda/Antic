@@ -28,10 +28,3 @@ test('should create a div with class div and conten - title', () => {
   const result = new Dom(testObj).createEl('div', 'div', 'title');
   expect(result).toEqual(expected);
 });
-
-test('should create a block menu', () => {
-  document.body.innerHTML = '<nav class="header__nav-container"><ul class="header__nav-list"><li class="header__nav-item"><a href="#" class="header__nav-link">Menu item 1</a></li><li class="header__nav-item"><a href="#" class="header__nav-link">Menu item 2</a></li></ul></nav>';
-  const expected = document.querySelector('.header__nav-container');
-  const result = new Dom(testObj).createHeaderNav(testObj.nav);
-  expect(result).toEqual(expected);
-});

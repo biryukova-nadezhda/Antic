@@ -42,7 +42,11 @@ export default class Dom {
 
     const heroContainer = this.createEl('div', 'header__hero-container');
     const logoContainer = this.createEl('div', 'header__logo', obj.logo);
-    const navContainer = this.createHeaderNav(obj.nav);
+
+    const navContainer = this.createEl('nav', 'header__nav-container');
+    const headerMenu = this.createMenuList(obj.nav);
+    navContainer.append(headerMenu);
+
     const navButton = this.createEl('button', 'header__nav-button');
     navButton.type = 'button';
     heroContainer.append(logoContainer);
@@ -73,16 +77,24 @@ export default class Dom {
     return container;
   }
 
-  createHeaderNav(array) {
+  createMenuList(array) {
     const nav = this.createEl('nav', 'header__nav-container');
-    const list = this.createEl('ul', 'header__nav-list');
 
-    array.forEach((navObj) => {
-      const item = `<li class="header__nav-item"><a href="${navObj.link}" class="header__nav-link">${navObj.textLink}</a></li>`;
-      list.insertAdjacentHTML('beforeend', item);
+    array.forEach((obj) => {
+      const list = this.createEl('ul', obj.classList);
+
+      obj.menuArray.forEach((item) => {
+        if (item.link) {
+          const li = `<li class="${item.classItem}"><a href="${item.link}" class="${item.classLink}">${item.textItem}</a></li>`;
+          list.insertAdjacentHTML('beforeend', li);
+        } else {
+          const li = `<li class="${item.classItem}">${item.textItem}</li>`;
+          list.insertAdjacentHTML('beforeend', li);
+        }
+      });
+
+      nav.append(list);
     });
-
-    nav.append(list);
 
     return nav;
   }
