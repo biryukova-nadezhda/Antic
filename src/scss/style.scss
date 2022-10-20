@@ -1,5 +1,6 @@
 @import './fonts.scss';
 @import './pageHeader.scss';
+@import './pageFooter.scss';
 
 * {
   margin: 0;
@@ -8,7 +9,7 @@
 }
 
 html {
-  font-size: 16px; /* 1rem */
+  font-size: 16px;
 }
 
 .svg-container {
@@ -23,4 +24,41 @@ html {
   border: none;
 
   cursor: pointer;
+}
+
+.block-link {
+  position: relative;
+
+  &__link {
+    padding-right: 0.5rem;
+
+    @include font('Karla', 700, 1.0625rem, 1.5625rem, $accentColor);
+    letter-spacing: 0.3px;
+    text-decoration: none;
+
+    &:hover {
+      color: $darkColor;
+    }
+  }
+
+  &__arrow {
+    -moz-border-radius: 0.25em;
+    -webkit-border-radius: 0.25em;
+    display: inline-block;
+    position: absolute;
+    top: 42%;
+
+    width: 0.4rem;
+    height: 0.4rem;
+
+    border-top: 2px solid $accentColor;
+    border-right: 2px solid $accentColor;
+    border-radius: 0.09rem;
+    transform: rotate(45deg);
+  }
+}
+
+.block-link__link:hover + .block-link__arrow {
+  border-top: 2px solid $darkColor;
+  border-right: 2px solid $darkColor;
 }

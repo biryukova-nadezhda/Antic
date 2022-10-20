@@ -1,0 +1,260 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.footer {
+  width: 100%;
+  max-width: 90rem;
+  padding: 4.375rem 9.375rem 4rem;
+  margin: auto;
+
+  background: $bgColor;
+
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+
+  &__logo {
+    margin-right: 1rem;
+    @include font('Merriweather', 700, 2.125rem, 1.5625rem, #534B42);
+    letter-spacing: 2px;
+  }
+
+  &__nav-block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__nav-list {
+    min-width: 7.875rem;
+    margin-right: 3rem;
+    margin-bottom: 1rem;
+    list-style-type: none;
+  }
+
+  &____nav-item {
+    margin-bottom: 0.75rem;
+    list-style-type: none;
+    @include font('Varta', 600, 1.5625rem, 1.875rem, #534B42);
+    letter-spacing: -0.2px;
+
+    &:first-child {
+      margin-bottom: 2.125rem;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav-link {
+    @include font('Varta', 400, 1.125rem, 1.5625rem, $mediumColor);
+    text-decoration: none;
+
+    &:hover {
+      color: $darkColor;
+    }
+  }
+
+  &__section_no-flex {
+    display: block;
+  }
+
+  &__social-block {
+    display: flex;
+    margin-bottom: 1.25rem;
+  }
+
+  &__social-list {
+    display: flex;
+    margin: auto;
+  }
+
+  &__social-item {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1.5rem;
+
+    list-style-type: none;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__social-link {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+
+    background-repeat: no-repeat;
+    background-size: 2rem 2rem;
+    background-position: center;
+  }
+
+  &-facebook {
+    background-image: url('../img/icons/footer-facebook.svg');
+  }
+
+  &-twitter {
+    background-image: url('../img/icons/footer-twitter.svg');
+  }
+
+  &-linkedin {
+    background-image: url('../img/icons/footer-linkedin.svg');
+  }
+
+  &-instargam {
+    background-image: url('../img/icons/footer-instagram.svg');
+  }
+
+  &__legals-block,
+  &__legals-list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__legals-content {
+    @include font('Varta', 400, 1.125rem, 1.5625rem, rgba(112, 100, 88, 0.7));
+  }
+
+  &__legals-item {
+    list-style-type: none;
+    margin-left: 1.875rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__legals-link {
+    @include font('Varta', 400, 1.125rem, 1.5625rem, rgba(112, 100, 88, 0.7));
+    text-decoration: none;
+
+    &:hover {
+      color: $darkColor;
+    }
+  }
+}
+
+.footer-blog {
+  width: 14.6875rem;
+  flex-shrink: 0;
+
+  &__title {
+    @include font('Varta', 600, 1.5625rem, 1.875rem, #534b42);
+    letter-spacing: -0.2px;
+  }
+
+  &__block-image {
+    width: 100%;
+    height: 41%;
+    margin: 2.125rem 0 0.9375rem;
+    @include bgImage(rgba(112, 100, 88, 0.9), '../img/footer-image.png')
+  }
+
+  &__content {
+    margin-bottom: 1.9375rem;
+    @include font('Varta', 400, 1rem, 1.5625rem, $mediumColor);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1075px) {
+  .footer {
+    padding: 4.375rem 4rem 4rem;
+
+    &__section {
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    &__logo {
+      width: 100%;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 3rem 2rem;
+
+    &__section {
+      display: block;
+      margin-bottom: 2.5rem;
+    }
+
+    &__logo {
+      margin: 0 0 2.5rem;
+      text-align: center;
+    }
+
+    &__nav-block {
+      display: block;
+    }
+
+    &__nav-list {
+      margin: 0 0 2.5rem;
+    }
+
+    &__nav-item {
+      margin-bottom: 1.625rem;
+      color: $darkColor;
+
+      &:first-child {
+        margin-bottom: 1.25rem;
+      }
+    }
+
+    &__social-block {
+      margin-bottom: 2.5rem;
+    }
+
+    &__social-item {
+      margin-left: 1.25rem;
+    }
+
+    &__legals-block {
+      flex-direction: column-reverse;
+    }
+
+    &__legals-content {
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    &__legals-list {
+      justify-content: start;
+      flex-wrap: wrap;
+    }
+
+    &__legals-item {
+      margin: 0 1.5rem 1.125rem 0;
+    }
+
+    &__legals-link {
+      color: rgba(0, 0, 0, 0.45);
+
+      &:hover {
+        color: $accentColor;
+      }
+    }
+  }
+
+  .footer-blog {
+    width: 100%;
+
+    &__block-image {
+      height: 11rem;
+      margin: 1.875rem 0 1rem;
+      background-image: url('../img/mobile__footer-image.png');
+    }
+
+    &__content {
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+      color: rgba(0, 0, 0, 0.45);
+    }
+  }
+}

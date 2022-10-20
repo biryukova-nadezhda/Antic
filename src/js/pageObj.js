@@ -1,37 +1,35 @@
 const pageObj = {
   header: {
     logo: 'actic',
-    nav: [
-      {
-        classList: 'header__nav-list',
-        menuArray: [
-          {
-            classItem: 'header__nav-item',
-            textItem: 'Products',
-            link: '#',
-            classLink: 'header__nav-link',
-          },
-          {
-            classItem: 'header__nav-item',
-            textItem: 'Rooms',
-            link: '#',
-            classLink: 'header__nav-link',
-          },
-          {
-            classItem: 'header__nav-item',
-            textItem: 'Services',
-            link: '#',
-            classLink: 'header__nav-link',
-          },
-          {
-            classItem: 'header__nav-item',
-            textItem: 'Inspirations',
-            link: '#',
-            classLink: 'header__nav-link',
-          },
-        ],
-      },
-    ],
+    nav: {
+      classList: 'header__nav-list',
+      menuArray: [
+        {
+          classItem: 'header__nav-item',
+          textItem: 'Products',
+          link: '#',
+          classLink: 'header__nav-link',
+        },
+        {
+          classItem: 'header__nav-item',
+          textItem: 'Rooms',
+          link: '#',
+          classLink: 'header__nav-link',
+        },
+        {
+          classItem: 'header__nav-item',
+          textItem: 'Services',
+          link: '#',
+          classLink: 'header__nav-link',
+        },
+        {
+          classItem: 'header__nav-item',
+          textItem: 'Inspirations',
+          link: '#',
+          classLink: 'header__nav-link',
+        },
+      ],
+    },
     smallTitle: 'Home design',
     bigTitle: 'Elegance for Interiors & Exteriors',
     content: 'We provide everyone with modern, trendy, quality furniture',

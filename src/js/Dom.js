@@ -20,6 +20,9 @@ export default class Dom {
 
     const header = this.createHeader(this.page.header);
     body.append(header);
+
+    const footer = this.createFooter(this.page.footer);
+    body.append(footer);
   }
 
   createHeader(obj) {
@@ -77,25 +80,80 @@ export default class Dom {
     return container;
   }
 
-  createMenuList(array) {
-    const nav = this.createEl('nav', 'header__nav-container');
+  createMenuList(obj) {
+    const list = this.createEl('ul', obj.classList);
 
-    array.forEach((obj) => {
-      const list = this.createEl('ul', obj.classList);
-
-      obj.menuArray.forEach((item) => {
-        if (item.link) {
-          const li = `<li class="${item.classItem}"><a href="${item.link}" class="${item.classLink}">${item.textItem}</a></li>`;
-          list.insertAdjacentHTML('beforeend', li);
-        } else {
-          const li = `<li class="${item.classItem}">${item.textItem}</li>`;
-          list.insertAdjacentHTML('beforeend', li);
-        }
-      });
-
-      nav.append(list);
+    obj.menuArray.forEach((item) => {
+      if (item.link) {
+        const li = `<li class="${item.classItem}"><a href="${item.link}" class="${item.classLink}">${item.textItem}</a></li>`;
+        list.insertAdjacentHTML('beforeend', li);
+      } else {
+        const li = `<li class="${item.classItem}">${item.textItem}</li>`;
+        list.insertAdjacentHTML('beforeend', li);
+      }
     });
 
-    return nav;
+    return list;
+  }
+
+  /* Footer */
+  createFooter(obj) {
+    const footer = this.createEl('footer', 'footer');
+    const section = this.createFooterSectionContent(obj);
+    const sectionNoFlex = this.createEl('section', 'footer__section_no-flex');
+
+    const socialBlock = this.createEl('div', 'footer__social-block');
+    const socialList = this.createMenuList(obj.socials);
+    socialBlock.append(socialList);
+
+    const legalsBlock = this.createEl('div', 'footer__legals-block');
+    const legalsContent = this.createEl('p', 'footer__legals-content', obj.legals);
+    const legalsList = this.createMenuList(obj.legals.legalsList);
+    legalsBlock.append(legalsContent);
+    legalsBlock.append(legalsList);
+    sectionNoFlex.append(socialBlock);
+    sectionNoFlex.append(legalsBlock);
+
+    footer.append(section);
+    footer.append(sectionNoFlex);
+
+    return footer;
+  }
+
+  createFooterSectionContent(obj) {
+    const section = this.createEl('section', 'footer__section');
+    const footerLogo = this.createEl('div', 'footer__logo', obj.logo);
+    const navBlock = this.createEl('div', 'footer__nav-block');
+
+    obj.nav.forEach((item) => {
+      const list = this.createMenuList(item);
+      navBlock.append(list);
+    });
+
+    const blog = this.createEl('article', 'footer-blog');
+    const blokLink = this.createBlockLink(obj.blog.blockLink);
+    const blogContent = `<h3 class="footer-blog__title">${obj.blog.title}</h3>
+    <div class="footer-blog__block-image"></div>
+    <p class="footer-blog__content">${obj.blog.content}</p>`;
+    blog.insertAdjacentHTML('beforeend', blogContent);
+    blog.append(blokLink);
+
+    section.append(footerLogo);
+    section.append(navBlock);
+    section.append(blog);
+
+    return section;
+  }
+
+  createBlockLink(obj) {
+    const blockLink = this.createEl('div', `${obj.classBlock}-link block-link`);
+    const link = this.createEl('a', `${obj.classBlock}_link block-link__link`, obj.textLink);
+    link.href = obj.link;
+    const arrow = this.createEl('span', `${obj.classBlock}-link_arrow block-link__arrow`);
+
+    blockLink.append(link);
+    blockLink.append(arrow);
+
+    return blockLink;
   }
 }
