@@ -107,7 +107,7 @@ export default class Dom {
     socialBlock.append(socialList);
 
     const legalsBlock = this.createEl('div', 'footer__legals-block');
-    const legalsContent = this.createEl('p', 'footer__legals-content', obj.legals);
+    const legalsContent = this.createEl('p', 'footer__legals-content', obj.legals.copyright);
     const legalsList = this.createMenuList(obj.legals.legalsList);
     legalsBlock.append(legalsContent);
     legalsBlock.append(legalsList);
