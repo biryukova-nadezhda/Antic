@@ -4,7 +4,7 @@
 .footer {
   width: 100%;
   max-width: 90rem;
-  padding: 4.375rem 9.375rem 4rem;
+  padding: 4.375rem 9% 4rem;
   margin: auto;
 
   background: $bgColor;
@@ -23,7 +23,6 @@
 
   &__nav-block {
     display: flex;
-    justify-content: space-between;
   }
 
   &__nav-list {
@@ -31,6 +30,10 @@
     margin-right: 3rem;
     margin-bottom: 1rem;
     list-style-type: none;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &__nav-item {
@@ -150,6 +153,7 @@
   &__block-image {
     width: 100%;
     height: 41%;
+    min-height: 10rem;
     margin: 2.125rem 0 0.9375rem;
     @include bgImage(rgba(112, 100, 88, 0.9), '../img/footer-image.png')
   }
@@ -160,9 +164,9 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 1075px) {
+@media (min-width: 768px) and (max-width: 1220px) {
   .footer {
-    padding: 4.375rem 4rem 4rem;
+    padding: 4.375rem 9% 4rem;
 
     &__section {
       flex-wrap: wrap;
@@ -192,7 +196,7 @@
     }
 
     &__nav-block {
-      display: block;
+      flex-direction: column;
     }
 
     &__nav-list {

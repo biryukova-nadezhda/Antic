@@ -34,6 +34,35 @@ const pageObj = {
     bigTitle: 'Elegance for Interiors & Exteriors',
     content: 'We provide everyone with modern, trendy, quality furniture',
   },
+  main: {
+    sectionRoom: {
+      classSection: 'room',
+      sectionTitle: 'Find your room',
+      sectionContent: 'Dining room, bedroom, bathroom or office. Find what you need',
+      slider: {
+        classSlider: 'room',
+        sliderArray: [
+          {
+            link: '#',
+            articleTitle: 'Bedroom',
+            classImgblock: 'slider-img__bedroom',
+            labelContent: 'New arrivals',
+          },
+          {
+            link: '#',
+            articleTitle: 'Living room',
+            classImgblock: 'slider-img__livingRoom',
+            labelContent: 'New arrivals',
+          },
+        ],
+        blockLink: {
+          textLink: 'Next',
+          link: '#',
+          classBlock: 'room-section__block-link',
+        },
+      },
+    },
+  },
   footer: {
     logo: 'antic',
     nav: [

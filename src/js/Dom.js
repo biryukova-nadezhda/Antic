@@ -21,6 +21,9 @@ export default class Dom {
     const header = this.createHeader(this.page.header);
     body.append(header);
 
+    const main = this.createMain(this.page.main);
+    body.append(main);
+
     const footer = this.createFooter(this.page.footer);
     body.append(footer);
   }
@@ -155,5 +158,59 @@ export default class Dom {
     blockLink.append(arrow);
 
     return blockLink;
+  }
+
+  /* Main */
+  createMain(obj) {
+    const main = this.createEl('main', 'main');
+    const sectionRoom = this.createSectionRoom(obj.sectionRoom);
+
+    main.append(sectionRoom);
+    return main;
+  }
+
+  createSectionRoom(obj) {
+    const section = this.createEl('section', `main-section ${obj.classSection}-section`);
+    const title = this.createEl('h2', 'main-section__title', obj.sectionTitle);
+
+    const flexContainer = this.createEl('div', `${obj.classSection}-section__flex-container`);
+    const content = this.createEl('p', `main-section__content ${obj.classSection}-section__content`, obj.sectionContent);
+    const slider = this.createSlider(obj.slider);
+    flexContainer.append(content);
+    flexContainer.append(slider);
+
+    const sliderEnd = obj.slider.sliderArray.length.toString().padStart(2, 0);
+    const sliderNav = this.createEl('div', `${obj.classSection}-section__slider-nav`);
+    const sliderDots = `<div class="${obj.classSection}-section__slider-dots">
+    <span class="${obj.classSection}-section__slider-amount ${obj.classSection}-section__slider-start">01</span>
+    <span class="${obj.classSection}-section__slider-amount">/</span>
+    <span class="${obj.classSection}-section__slider-amount ${obj.classSection}-section__slider-end">${sliderEnd}</span></div>`;
+    const blockLink = this.createBlockLink(obj.slider.blockLink);
+    sliderNav.insertAdjacentHTML('beforeend', sliderDots);
+    sliderNav.append(blockLink);
+
+    section.append(title);
+    section.append(flexContainer);
+    section.append(sliderNav);
+
+    return section;
+  }
+
+  createSlider(obj) {
+    const slider = this.createEl('ul', `${obj.classSlider}-section__slider`);
+    obj.sliderArray.forEach((item) => {
+      const li = `<li class="${obj.classSlider}-section__slider-item">
+        <a href="${item.link}" class="${obj.classSlider}-section__slider-link">
+          <article class="${obj.classSlider}-section__slider-card">
+              <h3 class="${obj.classSlider}-section__slider-title">${item.articleTitle}</h3>
+              <div class="${obj.classSlider}-section__slider-img ${item.classImgblock}"></div>
+              <div class="${obj.classSlider}-section__slider-label">${item.labelContent}</div>
+          </article>
+        </a></li>`;
+
+      slider.insertAdjacentHTML('beforeend', li);
+    });
+
+    return slider;
   }
 }

@@ -7,6 +7,7 @@
   color: $color;
 }
 
+
 @mixin bgImage($color, $link) {
   background-color: $color;
   background-image: url($link);
