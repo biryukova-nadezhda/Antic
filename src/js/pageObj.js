@@ -58,9 +58,37 @@ const pageObj = {
         blockLink: {
           textLink: 'Next',
           link: '#',
-          classBlock: 'room-section__block-link',
+          classBlock: 'room-section',
         },
       },
+    },
+    sectionDesign: {
+      classSection: 'design',
+      sectionTitle: 'We stay by your side to design your projects',
+      sectionContent: 'Dining room, bedroom, bathroom or office. Find what you need',
+      blockLink: {
+        textLink: 'Find out more',
+        link: '#',
+        classBlock: 'design-section',
+      },
+      card: [
+        {
+          title: 'Our Advices',
+          content: 'What if you took advantage of this rather special period to rethink your interior? You spend more time at home so you might as well feel good there.',
+        },
+        {
+          title: 'Click and Collect',
+          content: 'Adapted and contactless. Free from € 200 of purchases in stores offering the service.',
+        },
+        {
+          title: 'Conception Service',
+          content: 'Personalized service with an expert advisor for your interior and exterior decoration or layout projects. ',
+        },
+        {
+          title: 'Installation Service',
+          content: 'Our furniture packaged in flat packs are designed for easy assembly. But you can call on our partner.',
+        },
+      ],
     },
   },
   footer: {
@@ -235,7 +263,7 @@ const pageObj = {
       blockLink: {
         textLink: 'Learn more',
         link: '#',
-        classBlock: 'footer__blog',
+        classBlock: 'footer',
       },
     },
     socials: {

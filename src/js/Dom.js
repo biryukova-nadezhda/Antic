@@ -149,23 +149,25 @@ export default class Dom {
   }
 
   createBlockLink(obj) {
-    const blockLink = this.createEl('div', `${obj.classBlock}-link block-link`);
-    const link = this.createEl('a', `${obj.classBlock}_link block-link__link`, obj.textLink);
+    const block = this.createEl('div', `block-link ${obj.classBlock}__block-link`);
+    const link = this.createEl('a', `block-link__link ${obj.classBlock}__block-link_link`, obj.textLink);
     link.href = obj.link;
-    const arrow = this.createEl('span', `${obj.classBlock}-link_arrow block-link__arrow`);
+    const arrow = this.createEl('span', `block-link__arrow ${obj.classBlock}__block-link_arrow`);
 
-    blockLink.append(link);
-    blockLink.append(arrow);
+    block.append(link);
+    block.append(arrow);
 
-    return blockLink;
+    return block;
   }
 
   /* Main */
   createMain(obj) {
     const main = this.createEl('main', 'main');
     const sectionRoom = this.createSectionRoom(obj.sectionRoom);
+    const sectionDesign = this.createSectionDesign(obj.sectionDesign);
 
     main.append(sectionRoom);
+    main.append(sectionDesign);
     return main;
   }
 
@@ -212,5 +214,29 @@ export default class Dom {
     });
 
     return slider;
+  }
+
+  createSectionDesign(obj) {
+    const section = this.createEl('section', `main-section ${obj.classSection}-section`);
+
+    const titleBlock = this.createEl('div', `${obj.classSection}-section__title-block`);
+    const title = this.createEl('h2', 'main-section__title', obj.sectionTitle);
+    const blockLink = this.createBlockLink(obj.blockLink);
+    titleBlock.append(title);
+    titleBlock.append(blockLink);
+
+    const servicedBlock = this.createEl('div', `${obj.classSection}-section__services-block`);
+    obj.card.forEach((item) => {
+      const article = this.createEl('article', `${obj.classSection}-section__article design-article`);
+      const content = `<h3 class="${obj.classSection}-article__title">${item.title}</h3>
+      <p class="${obj.classSection}-article__content">${item.content}</p>`;
+      article.insertAdjacentHTML('beforeend', content);
+      servicedBlock.append(article);
+    });
+
+    section.append(titleBlock);
+    section.append(servicedBlock);
+
+    return section;
   }
 }

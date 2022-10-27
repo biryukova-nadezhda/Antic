@@ -1,0 +1,107 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.design-section {
+  display: flex;
+  justify-content: space-between;
+
+  &__title-block {
+    width: 28.625rem;
+  }
+
+  &__services-block {
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    width: 34.125rem;
+    padding-top: 1.25rem;
+  }
+
+  &__block-link {
+    margin-top: 1.875rem;
+  }
+}
+
+.design-article {
+  width: 16.15625rem;
+
+  &:nth-child(even) {
+    margin-left: 1.8125rem;
+  }
+
+  &:nth-child(3),
+  &:nth-child(4)  {
+    margin-top: 1.875rem;
+  }
+
+  &__title {
+    margin-bottom: 0.75rem;
+    @include font('Varta', 600, 1.5625rem, 1.875rem, $accentColor);
+    letter-spacing: -0.2px;
+  }
+
+  &__content {
+    @include font('Varta', 400, 1.125rem, 1.5625rem, $lightColor);
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1075px) {
+  .design-section {
+    flex-direction: column;
+
+    &__title-block {
+      width: 100%;
+    }
+
+    &__services-block {
+      margin: auto;
+      width: 100%;
+    }
+  }
+
+  .design-article {
+    width: calc(50% - 1.8125rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .design-section {
+    flex-direction: column;
+
+    &__title-block {
+      width: 100%;
+    }
+
+    &__services-block {
+      flex-direction: column;
+      width: 100%;
+      padding-top: 0;
+    }
+
+    &__block-link {
+      margin-top: 2rem;
+    }
+  }
+
+  .design-article {
+    width: 100%;
+
+    &:nth-child(even) {
+      margin-left: 0;
+    }
+
+    &:nth-child(3),
+    &:nth-child(4)  {
+      margin-top: 0;
+    }
+
+    &:nth-child(n+1) {
+      margin-top: 2.5rem;
+    }
+
+    &__title {
+      margin-bottom: 5px;
+    }
+  }
+}
