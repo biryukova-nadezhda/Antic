@@ -1,8 +1,15 @@
+/* General styles import*/
 @import './fonts.scss';
+@import './variables.scss';
+@import './mixins.scss';
+
 @import './pageHeader.scss';
-@import './pageFooter.scss';
 @import './pageMain.scss';
 @import './sectionDesign.scss';
+@import './sectionRoom.scss';
+@import './sectionTrends.scss';
+@import './pageFooter.scss';
+
 
 * {
   margin: 0;
@@ -17,14 +24,8 @@ html {
 .svg-container {
   width: 3.125rem;
   height: 3.125rem;
-
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: 3.125rem;
-  background-position: center;
-
+  @include bgImage(transparent,  3.125rem);
   border: none;
-
   cursor: pointer;
 }
 
@@ -63,4 +64,9 @@ html {
 .block-link__link:hover + .block-link__arrow {
   border-top: 2px solid $darkColor;
   border-right: 2px solid $darkColor;
+}
+
+.slider-dots___amount {
+  @include font('Varta', 400, 1.125rem, 1.5625rem, $lightColor);
+  opacity: 0.5;
 }

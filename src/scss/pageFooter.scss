@@ -17,7 +17,7 @@
 
   &__logo {
     margin-right: 1rem;
-    @include font('Merriweather', 700, 2.125rem, 1.5625rem, #534B42);
+    @include font('Merriweather', 700, 2.125rem, 1.5625rem, $brownDark);
     letter-spacing: 2px;
   }
 
@@ -39,7 +39,7 @@
   &__nav-item {
     margin-bottom: 0.75rem;
     list-style-type: none;
-    @include font('Varta', 600, 1.5625rem, 1.875rem, #534B42);
+    @include font('Varta', 600, 1.5625rem, 1.875rem, $brownDark);
     letter-spacing: -0.2px;
 
     &:first-child {
@@ -91,9 +91,7 @@
     width: 2rem;
     height: 2rem;
 
-    background-repeat: no-repeat;
-    background-size: 2rem 2rem;
-    background-position: center;
+    @include bgImage(transparent, 2rem);
   }
 
   &-facebook {
@@ -146,7 +144,7 @@
   flex-shrink: 0;
 
   &__title {
-    @include font('Varta', 600, 1.5625rem, 1.875rem, #534b42);
+    @include font('Varta', 600, 1.5625rem, 1.875rem, $brownDark);
     letter-spacing: -0.2px;
   }
 
@@ -155,7 +153,8 @@
     height: 41%;
     min-height: 10rem;
     margin: 2.125rem 0 0.9375rem;
-    @include bgImage(rgba(112, 100, 88, 0.9), '../img/footer-image.png')
+    @include bgImage(rgba(112, 100, 88, 0.9));
+    background-image: url('../img/footer-image.png');
   }
 
   &__content {
@@ -252,7 +251,6 @@
     &__block-image {
       height: 11rem;
       margin: 1.875rem 0 1rem;
-      background-image: url('../img/mobile__footer-image.png');
     }
 
     &__content {

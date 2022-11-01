@@ -1,0 +1,286 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.trends-section {
+  padding: 4rem 0 4.375rem 9.375rem;
+  background-color: #ffffff;
+
+  &__newsletter-title {
+    @include font('Merriweather', 300, 2.1875rem, 2.5rem, $darkColor);
+    letter-spacing: -0.3px;
+  }
+
+  &__flex-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content {
+    max-width: 31rem;
+    padding: 1.4375rem 0 1rem;
+    @include font('Varta', 400, 1.125rem, 1.5625rem, $lightColor);
+  }
+
+  &__input {
+    width: 18.5rem;
+    padding: 0.9375rem 0.9375rem 0.625rem;
+    @include font('Varta', 400, 1.125rem, 1.5625rem, $lightColor);
+
+    border: none;
+    outline: none;
+    background: rgba(243, 238, 232, 0.3);
+    border-radius: 1px;
+  }
+
+  &__button {
+    width: 8.9443rem;
+    height: 3.125rem;
+    padding: 0.5rem 1.875rem;
+    margin-left: 1rem;
+
+    @include font('Karla', 700, 1.0625rem, 1.5625rem, #FFFFFF);
+    letter-spacing: 0.3px;
+
+    background: $brownDark;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+  }
+
+  &__slider {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 4rem;
+  }
+}
+
+.trends-slider {
+  &__card-block {
+    display: flex;
+    margin-bottom: 2.5rem;
+
+    overflow: hidden;
+  }
+
+  &__card {
+    margin-left: 1.875rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__title {
+    @include font('Merriweather', 300, 2.8125rem, 2.5rem, $brownDark);
+    letter-spacing: -0.3px;
+  }
+
+  &__content {
+    max-width: 31.49%;
+    @include font('Varta', 400, 1.125rem, 1.5625rem, $mediumColor);
+  }
+
+  &__nav-block {
+    width: 14.5%;
+  }
+
+  &__button-block {
+    margin-bottom: 1.25rem;
+  }
+
+  &__button {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 0.6875rem;
+
+    background-image: url('../img/icons/scroll-down.svg');
+    background-size: 2.5rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &_back {
+      transform: rotate(90deg);
+    }
+
+    &_next {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.slider-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__image {
+    width: 28.625rem;
+    height: 34.375rem;
+    @include bgImage($bgColor);
+
+    &_chair {
+      background-image: url('../img/trend_1.png');
+    }
+
+    &_cooked {
+      background-image: url('../img/trend_2.png');
+    }
+
+    &_livingroom {
+      background-image: url('../img/trend_3.png');
+    }
+
+    &_tables {
+      background-image: url('../img/trend_4.png');
+    }
+  }
+
+  &__description {
+    display: none;
+    margin-top: 0.9375rem;
+    @include font('Lato', 400, 0.9375rem, 1.25rem, $darkColor);
+
+    &-block {
+      display: flex;
+      justify-content: space-between;
+      max-width: 71.25rem;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1075px) {
+  .trends-section {
+    padding: 2rem;
+
+    &__newsletter-title {
+      margin-bottom: 1.5rem;
+    }
+
+    &__content {
+      max-width: 20rem;
+      padding: 0 0 1rem;
+    }
+
+    &__input {
+      width: 12rem;
+      max-width: 13rem;
+    }
+  }
+
+  .trends-slider {
+    &__card {
+      margin-left: 1.5rem;
+    }
+
+    &__content {
+      max-width: 31.49%;
+    }
+  }
+
+  .slider-card__image {
+    width: 18.75rem;
+    height: 22.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .trends-section {
+    padding: 3rem 2rem;
+
+    &__flex-container {
+      flex-direction: column;
+    }
+
+    &__content {
+      max-width: 100%;
+      padding: 1rem 0;
+    }
+
+    &__form {
+      margin-top: 2rem;
+    }
+
+    &__input {
+      width: 100%;
+      padding: 0.75rem 0.9375rem;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    &__button {
+      width: 100%;
+      padding: 0.75rem 1.875rem;
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+
+    &__slider {
+      flex-direction: column-reverse;
+      margin-top: 4rem;
+    }
+  }
+
+  .trends-slider {
+    &__card-block {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 0;
+    }
+
+    &__card {
+      margin-left: 0;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      :nth-child(n+3) {
+        margin-top: 1.25rem;
+      }
+    }
+
+    &__description-block {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    &__title {
+      order: 1;
+      font-weight: 400;
+    }
+
+    &__content {
+      width: 100%;
+      max-width: 100%;
+      margin: 1.25rem 0 2.5rem;
+      color: $lightColor;
+    }
+
+    &__nav-block {
+      display: none;
+    }
+  }
+
+  .slider-card {
+    height: 100%;
+    flex-direction: column;
+    width: calc(50% - 1.25rem);
+
+    &:nth-child(even) {
+      margin-left: 1.25rem;
+    }
+
+    &__image {
+      width: 100%;
+      height: 10.9375rem;
+      @include bgImage($bgColor, $size:cover);
+    }
+
+    &__description {
+      display: block;
+    }
+  }
+}

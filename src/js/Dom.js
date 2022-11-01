@@ -3,18 +3,6 @@ export default class Dom {
     this.page = pageObj;
   }
 
-  createEl(typeEl, classEl, contentEL = null) {
-    this.name = 'createEl';
-    const el = document.createElement(typeEl);
-    el.className = classEl;
-
-    if (contentEL) {
-      el.textContent = contentEL;
-    }
-
-    return el;
-  }
-
   init() {
     const body = document.querySelector('body');
 
@@ -28,6 +16,78 @@ export default class Dom {
     body.append(footer);
   }
 
+  /* General methods */
+  createEl(typeEl, classEl, contentEL = null) {
+    this.name = 'createEl';
+    const el = document.createElement(typeEl);
+    el.className = classEl;
+
+    if (contentEL) {
+      el.textContent = contentEL;
+    }
+
+    return el;
+  }
+
+  createSliderDots(classSlider, end) {
+    const endSlider = end.toString().padStart(2, 0);
+    const container = this.createEl('div', `${classSlider}__dots slider-dots`);
+    const content = `<span class="slider-dots___amount ${classSlider}___amount ${classSlider}__start">01</span>
+    <span class="slider-dots___amount ${classSlider}__amount">/</span>
+    <span class="slider-dots___amount ${classSlider}__amount ${classSlider}__end">${endSlider}</span>`;
+    container.insertAdjacentHTML('beforeend', content);
+
+    return container;
+  }
+
+  createMenuList(obj) {
+    const list = this.createEl('ul', obj.classList);
+
+    obj.menuArray.forEach(item => {
+      if(item.link) {
+        let li = `<li class="${item.classItem}"><a href="${item.link}" class="${item.classLink}">${item.textItem}</a></li>`;
+        list.insertAdjacentHTML('beforeend', li);
+      } else {
+        let li = `<li class="${item.classItem}">${item.textItem}</li>`;
+        list.insertAdjacentHTML('beforeend', li);
+      }
+    });
+
+    return list;
+  }
+
+  createBlockLink(obj) {
+    const block = this.createEl('div', `block-link ${obj.classBlock}__block-link`);
+    const link = this.createEl('a', `block-link__link ${obj.classBlock}__block-link_link`, obj.textLink);
+    link.href = obj.link;
+    const arrow = this.createEl('span', `block-link__arrow ${obj.classBlock}__block-link_arrow`);
+
+    block.append(link);
+    block.append(arrow);
+
+    return block;
+  }
+
+  createSlider(obj) {
+    const slider = this.createEl('ul', `${obj.classSlider}-section__slider`);
+    obj.sliderArray.forEach(item => {
+      const li = `<li class="${obj.classSlider}-section__slider-item">
+        <a href="${item.link}" class="${obj.classSlider}-section__slider-link">
+          <article class="${obj.classSlider}-section__slider-card">
+              <h3 class="${obj.classSlider}-section__slider-title">${item.articleTitle}</h3>
+              <div class="${obj.classSlider}-section__slider-img ${item.classImgblock}"></div>
+              <div class="${obj.classSlider}-section__slider-label">${item.labelContent}</div>
+          </article>
+        </a></li>`;
+
+      slider.insertAdjacentHTML('beforeend', li);
+    });
+
+    return slider;
+  }
+
+
+  /* Header */
   createHeader(obj) {
     const header = this.createEl('header', 'header');
     const headerContainer = this.createHeaderContainer(obj);
@@ -83,22 +143,6 @@ export default class Dom {
     return container;
   }
 
-  createMenuList(obj) {
-    const list = this.createEl('ul', obj.classList);
-
-    obj.menuArray.forEach((item) => {
-      if (item.link) {
-        const li = `<li class="${item.classItem}"><a href="${item.link}" class="${item.classLink}">${item.textItem}</a></li>`;
-        list.insertAdjacentHTML('beforeend', li);
-      } else {
-        const li = `<li class="${item.classItem}">${item.textItem}</li>`;
-        list.insertAdjacentHTML('beforeend', li);
-      }
-    });
-
-    return list;
-  }
-
   /* Footer */
   createFooter(obj) {
     const footer = this.createEl('footer', 'footer');
@@ -128,7 +172,7 @@ export default class Dom {
     const footerLogo = this.createEl('div', 'footer__logo', obj.logo);
     const navBlock = this.createEl('div', 'footer__nav-block');
 
-    obj.nav.forEach((item) => {
+    obj.nav.forEach(item => {
       const list = this.createMenuList(item);
       navBlock.append(list);
     });
@@ -148,47 +192,35 @@ export default class Dom {
     return section;
   }
 
-  createBlockLink(obj) {
-    const block = this.createEl('div', `block-link ${obj.classBlock}__block-link`);
-    const link = this.createEl('a', `block-link__link ${obj.classBlock}__block-link_link`, obj.textLink);
-    link.href = obj.link;
-    const arrow = this.createEl('span', `block-link__arrow ${obj.classBlock}__block-link_arrow`);
-
-    block.append(link);
-    block.append(arrow);
-
-    return block;
-  }
-
   /* Main */
   createMain(obj) {
     const main = this.createEl('main', 'main');
     const sectionRoom = this.createSectionRoom(obj.sectionRoom);
     const sectionDesign = this.createSectionDesign(obj.sectionDesign);
+    const sectionTrends = this.createSectionTrends(obj.sectionTrend);
 
     main.append(sectionRoom);
     main.append(sectionDesign);
+    main.append(sectionTrends);
     return main;
   }
 
+  /* Section Room */
   createSectionRoom(obj) {
     const section = this.createEl('section', `main-section ${obj.classSection}-section`);
     const title = this.createEl('h2', 'main-section__title', obj.sectionTitle);
 
-    const flexContainer = this.createEl('div', `${obj.classSection}-section__flex-container`);
-    const content = this.createEl('p', `main-section__content ${obj.classSection}-section__content`, obj.sectionContent);
+    const flexContainer = this.createEl('div',`${obj.classSection}-section__flex-container`);
+    const content = this.createEl('p', `main-section__content ${obj.classSection}-section__content` , obj.sectionContent);
     const slider = this.createSlider(obj.slider);
     flexContainer.append(content);
     flexContainer.append(slider);
 
-    const sliderEnd = obj.slider.sliderArray.length.toString().padStart(2, 0);
+    const sliderEnd = obj.slider.sliderArray.length;
     const sliderNav = this.createEl('div', `${obj.classSection}-section__slider-nav`);
-    const sliderDots = `<div class="${obj.classSection}-section__slider-dots">
-    <span class="${obj.classSection}-section__slider-amount ${obj.classSection}-section__slider-start">01</span>
-    <span class="${obj.classSection}-section__slider-amount">/</span>
-    <span class="${obj.classSection}-section__slider-amount ${obj.classSection}-section__slider-end">${sliderEnd}</span></div>`;
+    const sliderDots = this.createSliderDots(`${obj.classSection}-section`, sliderEnd);
     const blockLink = this.createBlockLink(obj.slider.blockLink);
-    sliderNav.insertAdjacentHTML('beforeend', sliderDots);
+    sliderNav.append(sliderDots);
     sliderNav.append(blockLink);
 
     section.append(title);
@@ -196,24 +228,6 @@ export default class Dom {
     section.append(sliderNav);
 
     return section;
-  }
-
-  createSlider(obj) {
-    const slider = this.createEl('ul', `${obj.classSlider}-section__slider`);
-    obj.sliderArray.forEach((item) => {
-      const li = `<li class="${obj.classSlider}-section__slider-item">
-        <a href="${item.link}" class="${obj.classSlider}-section__slider-link">
-          <article class="${obj.classSlider}-section__slider-card">
-              <h3 class="${obj.classSlider}-section__slider-title">${item.articleTitle}</h3>
-              <div class="${obj.classSlider}-section__slider-img ${item.classImgblock}"></div>
-              <div class="${obj.classSlider}-section__slider-label">${item.labelContent}</div>
-          </article>
-        </a></li>`;
-
-      slider.insertAdjacentHTML('beforeend', li);
-    });
-
-    return slider;
   }
 
   createSectionDesign(obj) {
@@ -226,7 +240,7 @@ export default class Dom {
     titleBlock.append(blockLink);
 
     const servicedBlock = this.createEl('div', `${obj.classSection}-section__services-block`);
-    obj.card.forEach((item) => {
+    obj.card.forEach(item => {
       const article = this.createEl('article', `${obj.classSection}-section__article design-article`);
       const content = `<h3 class="${obj.classSection}-article__title">${item.title}</h3>
       <p class="${obj.classSection}-article__content">${item.content}</p>`;
@@ -238,5 +252,77 @@ export default class Dom {
     section.append(servicedBlock);
 
     return section;
+  }
+
+  /* Section Trends */
+  createSectionTrends(obj) {
+    const section = this.createEl('section', `main-section ${obj.classSection}-section`);
+    const blockNewsletter = this.createblockNewsletter(obj.blockNewsletter);
+    const blockSlider = this.createTrendsSliderBlock(obj.sliderBlock);
+
+    section.append(blockNewsletter);
+    section.append(blockSlider);
+
+    return section;
+  }
+
+  createblockNewsletter(obj) {
+    const block = this.createEl('div', `${obj.classBlock}__newsletter`);
+    const title = this.createEl('h3', `${obj.classBlock}__newsletter-title`, obj.title);
+    const flexContainer = this.createEl('div', `${obj.classBlock}__flex-container`);
+
+    const contentBlock = this.createEl('div', `${obj.classBlock}__content-block`);
+    const content = this.createEl('p', `${obj.classBlock}__content`, obj.content);
+    const blockLink = this.createBlockLink(obj.blockLink);
+    contentBlock.append(content);
+    contentBlock.append(blockLink);
+
+    const form = this.createForm(obj.form);
+    flexContainer.append(contentBlock);
+    flexContainer.append(form);
+    block.append(title);
+    block.append(flexContainer);
+
+    return block;
+  }
+
+  createForm(obj) {
+    const form = this.createEl('form', `${obj.classForm}__form`);
+    const contentForm = `<label class="${obj.classForm}__label">
+    <input type="${obj.typeInput}" class="${obj.classForm}__input" placeholder="${obj.placeholder}"></label>
+    <button type="${obj.typeButton}" class="${obj.classForm}__button">${obj.textButton}</button>`;
+    form.insertAdjacentHTML('beforeend', contentForm);
+
+    return form;
+  }
+
+  createTrendsSliderBlock(obj) {
+    const block = this.createEl('div', `${obj.classSlider}-section__slider ${obj.classSlider}-slider`);
+    const title = this.createEl('h3', `${obj.classSlider}-slider__title`, obj.title);
+    const content = this.createEl('p', `${obj.classSlider}-slider__content`, obj.content);
+
+    const slider = this.createEl('div', `${obj.classSlider}-slider__card-block`);
+    obj.cards.forEach(item => {
+      const type = item.split(' ').join('').toLowerCase();
+      const article = `<article class="${obj.classSlider}-slider__card ${obj.classCard}">
+      <div class="${obj.classCard}__image ${obj.classCard}__image_${type}"></div>
+      <span class="${obj.classCard}__description">${item}</span></article>`;
+      slider.insertAdjacentHTML('beforeend', article);
+    });
+
+    const navBlock = this.createEl('div', `${obj.classSlider}-slider__nav-block`);
+    const buttonBlock = `<div class="${obj.classSlider}-slider__button-block">
+    <button type="button" class="svg-container ${obj.classSlider}-slider__button ${obj.classSlider}-slider__button_back"></button>
+    <button type="button" class="svg-container ${obj.classSlider}-slider__button ${obj.classSlider}-slider__button_next"></button></div>`;
+    const sliderDots = this.createSliderDots(`${obj.classSlider-slider}`, obj.cards.length);
+    navBlock.insertAdjacentHTML('beforeend', buttonBlock);
+    navBlock.append(sliderDots);
+
+    block.append(slider);
+    block.append(title);
+    block.append(content);
+    block.append(navBlock);
+
+    return block;
   }
 }

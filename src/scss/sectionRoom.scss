@@ -1,0 +1,185 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.room-section {
+  &__flex-container {
+    display: flex;
+    margin: 3rem 0;
+  }
+
+  &__slider {
+    display: flex;
+    width: 88.51%;
+    padding: 0 0 0 1.5rem;
+  }
+
+  &__content {
+    width: 14.47%;
+  }
+
+  &__slider-item {
+    width: 48%;
+    margin-left: 2rem;
+    list-style-type: none;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__slider-link {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+  }
+
+  &__slider-card {
+    display: flex;
+    position: relative;
+    min-height: 21.875rem;
+  }
+
+  &__slider-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+
+    @include font('Merriweather', 400, 3.4375rem, 3.75rem, $accentColor);
+    text-align: center;
+    letter-spacing: -0.6px;
+  }
+
+  &__slider-img {
+    position: relative;
+    width: 56.937%;
+    margin-right: 6.91%;
+    @include bgImage($brownDark);
+    border-radius: 1px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: #F0F0F0;
+      opacity: 10%;
+      border-radius: 1px;
+    }
+  }
+
+  &__slider-label {
+    width: 36.153%;
+    @include font('Varta', 400, 1.125rem, 1.5625rem, $lightColor);
+  }
+
+  &__slider-nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__dots {
+    margin-right: 9.25rem;
+  }
+
+  &__block-link_link {
+    padding-right: 1rem;
+    font-size: 1.25rem;
+  }
+}
+
+.slider-img__bedroom {
+  background-image: url('../img/new-arrivals_1.png');
+}
+
+.slider-img__livingRoom {
+  background-image: url('../img/new-arrivals_2.png');
+}
+
+@media (min-width: 768px) and (max-width: 1075px) {
+  .room-section {
+    &__flex-container {
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    &__slider {
+      display: flex;
+      width: 100%;
+      padding: 0 0 0 0;
+    }
+
+    &__content {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .room-section {
+    &__flex-container {
+      flex-direction: column;
+      margin: 1.25rem 0 0;
+    }
+
+    &__slider {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 0;
+      margin: 2.0625rem 0;
+    }
+
+    &__content {
+      width: 100%;
+    }
+
+    &__slider-item {
+      width: 100%;
+      margin-left: 0;
+
+      &:nth-child(n+2) {
+        display: none;
+      }
+    }
+
+    &__slider-card {
+      min-height: 14.53rem;
+    }
+
+    &__slider-title {
+      @include font('Merriweather', 300, 2.1875rem, 2.5rem, $accentColor);
+      letter-spacing: -0.3px;
+    }
+
+    &__slider-img {
+      width: 66.882%;
+      margin-right: 8.06%;
+    }
+
+    &__slider-label {
+      width: 25.058%;
+      font-size: 1.125rem;
+      line-height: 1.5625rem;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    &__slider-nav {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+
+    &__dots {
+      margin-right: 0;
+    }
+  }
+
+  .slider-img__bedroom {
+    background-image: url('../img/mobile__new-arrivals_1.png');
+  }
+}

@@ -19,7 +19,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 7.53125rem; /* 120.5px */
+    margin-bottom: 7.53125rem;
   }
 
   &__logo {
@@ -36,7 +36,7 @@
   }
 
   &__nav-item {
-    margin-left: 1.5rem; /* 24px */
+    margin-left: 1.5rem;
 
     &:first-child {
       margin-left: 0;
@@ -67,7 +67,7 @@
   }
 
   &__small-title {
-    margin-bottom: 3.125rem; /* 50px */
+    margin-bottom: 3.125rem;
     @include font('Varta', 700, 0.875rem, 1.25rem, $accentColor);
     letter-spacing: 1px;
   }
@@ -98,7 +98,8 @@
   &__image-container {
     width: calc(100% - 720px);
     position: relative;
-    @include bgImage($mediumColor, '../img/header-image.png')
+    @include bgImage($mediumColor);
+    background-image: url('../img/header-image.png');
   }
 
   &__chat {
@@ -139,7 +140,8 @@
       padding: 2.9375rem 2rem 47.428%;
       text-align: center;
       z-index: 2;
-      @include bgImage($mediumColor, '../img/mobile__header-image.png');
+      @include bgImage($mediumColor);
+      background-image: url('../img/mobile__header-image.png');
 
       &:after {
         content: '';
@@ -155,7 +157,7 @@
     }
 
     &__hero-container {
-      margin-bottom: 6.34375rem; /* 101.5px */
+      margin-bottom: 6.34375rem;
     }
 
     &__logo {
@@ -200,15 +202,15 @@
     }
 
     &__small-title {
-      margin-bottom: 1.5rem; /* 24px */
+      margin-bottom: 1.5rem;
       text-align: center;
       text-transform: uppercase;
       color: #FFFFFF;
     }
 
     &__title {
-      font-size: 2.1875rem; /* 35px */
-      line-height: 2.5rem; /* 40px */
+      font-size: 2.1875rem;
+      line-height: 2.5rem;
       text-align: center;
       letter-spacing: -0.3px;
       color: #FFFFFF;

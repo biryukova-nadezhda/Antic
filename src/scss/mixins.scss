@@ -8,10 +8,9 @@
 }
 
 
-@mixin bgImage($color, $link) {
+@mixin bgImage($color, $size:cover) {
   background-color: $color;
-  background-image: url($link);
-  background-size: cover;
+  background-size: $size;
   background-repeat: no-repeat;
   background-position: center;
 }
