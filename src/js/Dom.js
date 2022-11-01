@@ -43,12 +43,12 @@ export default class Dom {
   createMenuList(obj) {
     const list = this.createEl('ul', obj.classList);
 
-    obj.menuArray.forEach(item => {
-      if(item.link) {
-        let li = `<li class="${item.classItem}"><a href="${item.link}" class="${item.classLink}">${item.textItem}</a></li>`;
+    obj.menuArray.forEach((item) => {
+      if (item.link) {
+        const li = `<li class="${item.classItem}"><a href="${item.link}" class="${item.classLink}">${item.textItem}</a></li>`;
         list.insertAdjacentHTML('beforeend', li);
       } else {
-        let li = `<li class="${item.classItem}">${item.textItem}</li>`;
+        const li = `<li class="${item.classItem}">${item.textItem}</li>`;
         list.insertAdjacentHTML('beforeend', li);
       }
     });
@@ -70,7 +70,7 @@ export default class Dom {
 
   createSlider(obj) {
     const slider = this.createEl('ul', `${obj.classSlider}-section__slider`);
-    obj.sliderArray.forEach(item => {
+    obj.sliderArray.forEach((item) => {
       const li = `<li class="${obj.classSlider}-section__slider-item">
         <a href="${item.link}" class="${obj.classSlider}-section__slider-link">
           <article class="${obj.classSlider}-section__slider-card">
@@ -85,7 +85,6 @@ export default class Dom {
 
     return slider;
   }
-
 
   /* Header */
   createHeader(obj) {
@@ -172,7 +171,7 @@ export default class Dom {
     const footerLogo = this.createEl('div', 'footer__logo', obj.logo);
     const navBlock = this.createEl('div', 'footer__nav-block');
 
-    obj.nav.forEach(item => {
+    obj.nav.forEach((item) => {
       const list = this.createMenuList(item);
       navBlock.append(list);
     });
@@ -210,8 +209,8 @@ export default class Dom {
     const section = this.createEl('section', `main-section ${obj.classSection}-section`);
     const title = this.createEl('h2', 'main-section__title', obj.sectionTitle);
 
-    const flexContainer = this.createEl('div',`${obj.classSection}-section__flex-container`);
-    const content = this.createEl('p', `main-section__content ${obj.classSection}-section__content` , obj.sectionContent);
+    const flexContainer = this.createEl('div', `${obj.classSection}-section__flex-container`);
+    const content = this.createEl('p', `main-section__content ${obj.classSection}-section__content`, obj.sectionContent);
     const slider = this.createSlider(obj.slider);
     flexContainer.append(content);
     flexContainer.append(slider);
@@ -240,7 +239,7 @@ export default class Dom {
     titleBlock.append(blockLink);
 
     const servicedBlock = this.createEl('div', `${obj.classSection}-section__services-block`);
-    obj.card.forEach(item => {
+    obj.card.forEach((item) => {
       const article = this.createEl('article', `${obj.classSection}-section__article design-article`);
       const content = `<h3 class="${obj.classSection}-article__title">${item.title}</h3>
       <p class="${obj.classSection}-article__content">${item.content}</p>`;
@@ -302,7 +301,7 @@ export default class Dom {
     const content = this.createEl('p', `${obj.classSlider}-slider__content`, obj.content);
 
     const slider = this.createEl('div', `${obj.classSlider}-slider__card-block`);
-    obj.cards.forEach(item => {
+    obj.cards.forEach((item) => {
       const type = item.split(' ').join('').toLowerCase();
       const article = `<article class="${obj.classSlider}-slider__card ${obj.classCard}">
       <div class="${obj.classCard}__image ${obj.classCard}__image_${type}"></div>
@@ -314,7 +313,7 @@ export default class Dom {
     const buttonBlock = `<div class="${obj.classSlider}-slider__button-block">
     <button type="button" class="svg-container ${obj.classSlider}-slider__button ${obj.classSlider}-slider__button_back"></button>
     <button type="button" class="svg-container ${obj.classSlider}-slider__button ${obj.classSlider}-slider__button_next"></button></div>`;
-    const sliderDots = this.createSliderDots(`${obj.classSlider-slider}`, obj.cards.length);
+    const sliderDots = this.createSliderDots(`${obj.classSlider - slider}`, obj.cards.length);
     navBlock.insertAdjacentHTML('beforeend', buttonBlock);
     navBlock.append(sliderDots);
 
