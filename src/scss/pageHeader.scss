@@ -1,42 +1,41 @@
 @import './variables.scss';
 @import './mixins.scss';
 
+
 .header {
   display: flex;
+  justify-content: space-between;
   width: 100%;
   max-width: 90rem;
   margin: auto;
+  background-color: $bgColor;
 
   &__container {
     width: 50%;
-    min-width: 45rem;
-    padding: 4.0625rem 6.94% 13.4379rem 10.417%;
-    background-color: $bgColor;
-    text-align: left;
+    padding: 4.0625rem 1.6667% 13.4375rem 10.45%;
   }
 
-  &__hero-container {
+  &__hero-container,
+  &__nav-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 7.53125rem;
   }
 
   &__logo {
+    margin-right: 5.615%;
     @include font('Merriweather', 700, 2.125rem, 1.5625rem, $accentColor);
     letter-spacing: 2px;
   }
 
-  &__nav-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 0.28125rem;
-    list-style-type: none;
+  &__nav-container {
+    width: 100%;
+    padding-top: 0.5rem;
   }
 
   &__nav-item {
-    margin-left: 1.5rem;
+    margin-left: 5.655%;
+    list-style-type: none;
 
     &:first-child {
       margin-left: 0;
@@ -47,13 +46,8 @@
     @include font('Varta', 400, 1.125rem, 1.5625rem, $mediumColor);
     text-decoration: none;
 
-    &:hover {
+    :hover {
       color: $darkColor;
-      text-decoration: underline;
-    }
-
-    &:visited {
-      color: $lightColor;
     }
   }
 
@@ -62,33 +56,24 @@
   }
 
   &__text-container {
-    width: 89.362%;
-    margin-bottom: 3rem;
+    max-width: 24.2rem;
+    margin: 8rem 0 3rem;
   }
 
   &__small-title {
-    margin-bottom: 3.125rem;
     @include font('Varta', 700, 0.875rem, 1.25rem, $accentColor);
     letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
   &__title {
+    margin: 4.25rem 0 3.1875rem;
     @include font('Merriweather', 300, 3.125rem, 4.375rem, $accentColor);
     letter-spacing: -0.4px;
   }
 
-  &__content-block {
-    margin-top: 1.9375rem;
-    padding-right: 2.0625rem;
-  }
-
   &__content {
     @include font('Varta', 300, 1.375rem, 1.9375rem, $lightColor);
-  }
-
-  &__scroll-container {
-    width: 100%;
-    text-align: left;
   }
 
   &__scroll {
@@ -96,93 +81,119 @@
   }
 
   &__image-container {
-    width: calc(100% - 720px);
     position: relative;
+    z-index: 3;
+    width: calc(100% - 620px);
     @include bgImage($mediumColor);
     background-image: url('../img/header-image.png');
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(0deg,#706458,#706458);
+      opacity: 0.3;
+      z-index: -1;
+    }
   }
 
   &__chat {
-    top: 3.4375rem;
-    right: 3.1875rem;
     position: absolute;
+    top: 3.4375rem;
+    right: 3.1856rem;
     background-image: url('../img/icons/chat-logo.svg');
   }
 }
 
+
 @media (min-width: 768px) and (max-width: 1075px) {
   .header {
     &__container {
-      width: 60%;
-      min-width: 500px;
+      padding-left: 5%;
     }
 
     &__hero-container {
-      display: block;
+      flex-wrap: wrap;
     }
 
-    &__nav-container {
-      margin-top: 2rem;
+    &__logo {
+      width: 100%;
+      margin-bottom: 1.5rem;
     }
 
     &__image-container {
-      width: 40%;
+      min-width: 23rem;
     }
   }
 }
 
 @media (max-width: 767px) {
   .header {
+    flex-direction: column;
+    position: relative;
+    z-index: 3;
+    @include bgImage($mediumColor);
+    background-image: url('../img/mobile__header-image.png');
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(0deg,#706458,#706458);
+      opacity: 0.3;
+      z-index: -1;
+    }
+
     &__container {
       width: 100%;
-      min-width: 370px;
-      position: relative;
-      padding: 2.9375rem 2rem 47.428%;
-      text-align: center;
-      z-index: 2;
-      @include bgImage($mediumColor);
-      background-image: url('../img/mobile__header-image.png');
-
-      &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: linear-gradient(0deg, rgba(112, 100, 88, 0.2), rgba(112, 100, 88, 0.2));
-        opacity: 0.2;
-        z-index: -1;
-      }
+      padding: 3rem 2rem 11.125rem;
     }
 
     &__hero-container {
-      margin-bottom: 6.34375rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
 
-    &__logo {
+    &__logo,
+    &__small-title {
       color: #FFFFFF;
     }
 
-    &__image-container,
     &__nav-container {
       display: none;
+      padding-top: 0;
+    }
+
+    &__nav-list {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    &__nav-item {
+      margin-left: 0;
     }
 
     &__nav-button {
       display: block;
+      position: relative;
       width: 1.5625rem;
       height: 1.5625rem;
-      position: relative;
       background-color: inherit;
       border: none;
 
       &:before,
       &:after {
-        content: '';
+        content: "";
+        position: absolute;
         width: 100%;
         height: 2px;
-        position: absolute;
         right: 0;
         background-color: #ffffff;
       }
@@ -197,35 +208,23 @@
     }
 
     &__text-container {
-      width: 100%;
-      margin-bottom: 1.5rem;
-    }
-
-    &__small-title {
-      margin-bottom: 1.5rem;
+      max-width: 100%;
+      margin: 6.5625rem 0 1.8125rem;
       text-align: center;
-      text-transform: uppercase;
-      color: #FFFFFF;
     }
 
     &__title {
+      margin: 2.125rem 0 2.0625rem;
       font-size: 2.1875rem;
       line-height: 2.5rem;
-      text-align: center;
       letter-spacing: -0.3px;
       color: #FFFFFF;
-    }
-
-    &__content-block {
-      margin-top: 1.5rem;
-      padding-right: 0;
     }
 
     &__content {
       font-weight: 400;
       font-size: 1.125rem;
       line-height: 1.5625rem;
-      text-align: center;
       color: #F7F8F9;
     }
 
@@ -235,6 +234,17 @@
 
     &__scroll {
       background-image: url('../img/icons/mobile__scroll-down.svg');
+    }
+
+    &__image-container {
+      display: flex;
+    }
+
+    &__chat {
+      position: absolute;
+      top: 3.4375rem;
+      right: 3.1856rem;
+      background-image: url('../img/icons/chat-logo.svg');
     }
   }
 }

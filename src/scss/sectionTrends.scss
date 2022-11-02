@@ -24,8 +24,7 @@
   &__input {
     width: 18.5rem;
     padding: 0.9375rem 0.9375rem 0.625rem;
-    @include font('Varta', 400, 1.125rem, 1.5625rem, $lightColor);
-
+    @include font('Varta', 400, 1.125rem, 1.5625rem, rgba(112, 100, 88, 0.9));
     border: none;
     outline: none;
     background: rgba(243, 238, 232, 0.3);
@@ -59,7 +58,6 @@
   &__card-block {
     display: flex;
     margin-bottom: 2.5rem;
-
     overflow: hidden;
   }
 
@@ -69,6 +67,12 @@
     &:first-child {
       margin-left: 0;
     }
+  }
+
+  &__description-block {
+    display: flex;
+    justify-content: space-between;
+    max-width: 71.25rem;
   }
 
   &__title {
@@ -143,12 +147,6 @@
     display: none;
     margin-top: 0.9375rem;
     @include font('Lato', 400, 0.9375rem, 1.25rem, $darkColor);
-
-    &-block {
-      display: flex;
-      justify-content: space-between;
-      max-width: 71.25rem;
-    }
   }
 }
 
@@ -237,7 +235,7 @@
         margin-left: 0;
       }
 
-      :nth-child(n+3) {
+      &:nth-child(n+3) {
         margin-top: 1.25rem;
       }
     }
@@ -249,7 +247,9 @@
 
     &__title {
       order: 1;
+      font-size: 2.1875rem;
       font-weight: 400;
+      letter-spacing: -0.3px;
     }
 
     &__content {
@@ -276,7 +276,7 @@
     &__image {
       width: 100%;
       height: 10.9375rem;
-      @include bgImage($bgColor, $size:cover);
+      @include bgImage($bgColor);
     }
 
     &__description {
