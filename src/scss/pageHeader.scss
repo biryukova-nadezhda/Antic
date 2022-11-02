@@ -46,7 +46,7 @@
     @include font('Varta', 400, 1.125rem, 1.5625rem, $mediumColor);
     text-decoration: none;
 
-    :hover {
+    &:hover {
       color: $darkColor;
     }
   }
