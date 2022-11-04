@@ -23,7 +23,7 @@ export default class Action {
         sliderLent: 'trends-slider__card-block',
         sliderWindow: 'trends-slider',
         sliderCard: 'slider-card',
-        shiftProcent: 0.5,
+        shiftProcent: 0.25,
       },
     };
 
