@@ -51,6 +51,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 4rem;
+    overflow: hidden;
   }
 }
 
@@ -58,7 +59,9 @@
   &__card-block {
     display: flex;
     margin-bottom: 2.5rem;
-    overflow: hidden;
+    position: relative;
+    left: 0;
+    transition: left ease 1s;
   }
 
   &__card {
