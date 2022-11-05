@@ -234,11 +234,13 @@
     }
 
     &__scroll {
+      display: inline-block;
       background-image: url('../img/icons/mobile__scroll-down.svg');
     }
 
     &__image-container {
-      display: flex;
+      /* display: flex; */
+      display: none;
     }
 
     &__chat {

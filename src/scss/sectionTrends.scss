@@ -90,6 +90,7 @@
 
   &__nav-block {
     width: 14.5%;
+    min-width: 7.3125rem;
   }
 
   &__button-block {
@@ -178,7 +179,7 @@
     }
 
     &__content {
-      max-width: 31.49%;
+      /* max-width: 31.49%; */
     }
   }
 
@@ -226,6 +227,7 @@
 
   .trends-slider {
     &__card-block {
+      position: static;
       flex-wrap: wrap;
       justify-content: space-between;
       margin-bottom: 0;
