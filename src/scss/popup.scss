@@ -1,0 +1,39 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.popup {
+  position: fixed;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $bgColor;
+    opacity: 0.6;
+  }
+}
+
+/* Стили для блока подписки*/
+.subscription {
+  width: 35.15%;
+  max-width: 32rem;
+  padding: 1.875rem 5%;
+  min-width: 12.65rem;
+
+  @include font('Varta', 600, 1.5625rem, 1.875rem, $bgColor);
+  letter-spacing: -0.2px;
+  text-align: center;
+
+  background-color: $lightColor;
+  border-radius: 5px;
+}

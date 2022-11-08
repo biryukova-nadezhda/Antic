@@ -256,10 +256,7 @@ export default class Dom {
   /* Section Trends */
   createSectionTrends(obj) {
     const section = this.createEl('section', `main-section ${obj.classSection}-section`);
-
-    /*! !!!!!!!!!!!!!!!!!!! */
     section.id = 'scrollDown';
-    /*! !!!!!!!!!!!!!!!!!!! */
 
     const blockNewsletter = this.createblockNewsletter(obj.blockNewsletter);
     const blockSlider = this.createTrendsSliderBlock(obj.sliderBlock);

@@ -105,7 +105,7 @@ const pageObj = {
           classForm: 'trends-section',
           typeInput: 'email',
           placeholder: 'email@address.com',
-          typeButton: 'button',
+          typeButton: 'submit',
           textButton: 'Subscribe',
         },
       },
