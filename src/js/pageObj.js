@@ -1,6 +1,6 @@
 const pageObj = {
   header: {
-    logo: 'actic',
+    logo: 'antic',
     nav: {
       classList: 'header__nav-list',
       menuArray: [

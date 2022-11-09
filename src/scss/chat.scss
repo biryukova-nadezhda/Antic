@@ -1,0 +1,126 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+.chat-container {
+  position: relative;
+  z-index: 10;
+}
+
+.chat {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+
+  width: 24rem;
+  height: 40rem;
+  background-color: $bgColor;
+  box-shadow: 0px 0px 20px 18px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.9375rem;
+    width: 100%;
+    height: 4rem;
+
+    background-color: rgba(172, 147, 124, 1);
+    color: #ffffff;
+    border-radius: 5px 5px 0 0;
+
+    &__logo {
+      margin-right: 1rem;
+      @include  font('Merriweather', 700, 1.5rem, 1.5rem, #ffffff);
+      letter-spacing: 2px;
+    }
+
+    &__button {
+      padding: 0.5rem;
+      width: 1.875rem;
+      height: 1.875rem;
+      @include  font('Varta', 700, 1rem, 1rem, #ffffff);
+      letter-spacing: 2px;
+      border-radius: 50%;
+      border: none;
+      background-color: transparent;
+
+      &:hover {
+        background-color: rgb(142, 122, 103);
+      }
+    }
+
+  }
+
+  &-main {
+    padding: 0.9375rem;
+    width: 100%;
+    height: calc(100% - 4rem - 7rem);
+    background-color: #ffffff;
+    overflow-y: auto;
+  }
+}
+
+.message {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 1.2rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &-client {
+    justify-content: right;
+  }
+
+  &__text {
+    width: 80%;
+    padding: 0.5rem;
+    font-size: 1.125rem;
+    color: #ffffff;
+    border-radius: 5px;
+    background-color: rgba(172, 147, 124, 1);
+    box-shadow: 3px -2px 12px 0px rgba(0, 0, 0, 0.4);
+  }
+
+  &-client &__text {
+    background-color: $bgColor;
+    color: $brownDark;
+  }
+}
+
+.chat-footer {
+  width: 100%;
+  height: 7rem;
+  padding: 0.9375rem;
+  border-radius: 0 0 5px 5px;
+  background-color: rgba(172, 147, 124, 1);
+
+  &__textarea {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0.5rem;
+    width: 100%;
+    min-height: 5rem;
+    @include font('Varta', 700, 1.125rem, 1.5rem, $brownDark);
+
+    outline: none;
+    resize: none;
+    border: none;
+    border-radius: 5px;
+
+    background-color: #ffffff;
+  }
+}
+
+@media (max-width: 767px) {
+  .chat {
+    width: 100vw;
+    height: 100vh;
+    right: 0;
+    bottom: 0;
+  }
+}
