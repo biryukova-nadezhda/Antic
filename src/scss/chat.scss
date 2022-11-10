@@ -102,7 +102,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 0.5rem;
+    padding: 0.7rem;
     width: 100%;
     min-height: 5rem;
     @include font('Varta', 700, 1.125rem, 1.5rem, $brownDark);
@@ -113,6 +113,46 @@
     border-radius: 5px;
 
     background-color: #ffffff;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1075px) {
+  .chat {
+    width: 35rem;
+    height: 55rem;
+
+    &-header {
+      height: 7rem;
+
+      &__logo {
+        font-size: 2rem;
+        line-height: 2rem;
+      }
+
+      &__button {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.5rem;
+      }
+    }
+
+    &-main {
+      height: calc(100% - 7rem - 10rem);
+    }
+
+    &-footer {
+      height: 10rem;
+
+      &__textarea {
+        min-height: 8rem;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .message__text {
+    font-size: 2rem;
   }
 }
 

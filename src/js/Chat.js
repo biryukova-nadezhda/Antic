@@ -71,6 +71,8 @@ export default class Chat {
       messageBlock = this.createEl('div', 'message message-client');
     } else if (type === 'bot') {
       messageBlock = this.createEl('div', 'message');
+    } else {
+      throw new Error('This type does not exist');
     }
 
     messageBlock.append(messageText);
