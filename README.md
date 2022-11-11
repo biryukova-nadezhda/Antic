@@ -4,3 +4,5 @@
 [Git-pages](https://biryukova-nadezhda.github.io/Antic/)
 
 [Figma](https://www.figma.com/file/K3qeLCTsiHWwZ9FY4x24fj/Antic-%E2%80%A2-Decoration-Landing-Page-(Community))
+
+Ознакомиться с классами и кратким описанием методов можно в [документации](./src/md/)
